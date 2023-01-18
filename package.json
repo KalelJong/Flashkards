@@ -1,0 +1,46 @@
+{
+  "name": "lelak-flashkards",
+  "description": "Flashcard practice App",
+  "version": "1.0.0",
+  "scripts": {
+    "sass:dev": "sass --watch src/sass:out --style expanded",
+    "sass:prod": "sass src/sass:build --style compressed --no-source-map",
+    "pug:dev": "pug src/pages --out ./out --pretty --watch",
+    "pug:prod": "pug src/pages --out ./build --pretty",
+    "rollup:dev": "rollup --config ./rollup.config.dev.js --watch --sourcemap",
+    "rollup:prod": "rollup --config ./rollup.config.prod.js",
+    "clean:dev": "rimraf out && mkdir out",
+    "clean:build": "rimraf build",
+    "clean:all": "rimraf build node_modules out && mkdir out",
+    "start": "concurrently \"yarn pug:dev\" \"yarn sass:dev\" \"yarn rollup:dev\" \"yarn serve\" --timings",
+    "build": "concurrently \"yarn clean:build\" \"yarn pug:prod\" \"yarn sass:prod\" \"yarn rollup:prod\"",
+    "serve": "browser-sync ./out -watch"
+  },
+  "type": "module",
+  "contributors": [
+    {
+      "name": "Kalel Poeta",
+      "email": "kalel@lelak.co",
+      "url": "https://www.lelak.co"
+    }
+  ],
+  "private": true,
+  "devDependencies": {
+    "@rollup/plugin-typescript": "^9.0.1",
+    "@typescript-eslint/eslint-plugin": "^5.41.0",
+    "@typescript-eslint/parser": "^5.41.0",
+    "browser-sync": "^2.27.10",
+    "concurrently": "^7.4.0",
+    "eslint": "^8.26.0",
+    "prettier": "^2.7.1",
+    "pug": "^3.0.2",
+    "pug-cli": "^1.0.0-alpha6",
+    "rimraf": "^3.0.2",
+    "rollup": "^3.2.3",
+    "rollup-plugin-copy": "^3.4.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "sass": "^1.55.0",
+    "tslib": "^2.4.0",
+    "typescript": "^4.8.4"
+  }
+}
